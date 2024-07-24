@@ -14,6 +14,12 @@ export const authOptions = {
 	],
 	adapter: PrismaAdapter(prisma),
 	secret: process.env.NEXTAUTH_SECRET,
+	cookies: {
+		sessionToken: {
+			sameSite: 'lax',
+		},
+	},
+	debug: true,
 };
 
 const handler = NextAuth(authOptions);
