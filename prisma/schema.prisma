@@ -8,16 +8,46 @@ generator client {
 }
 
 model User {
-  id      Int     @id @default(autoincrement())
-  email   String  @unique
-  name    String
-  profile Profile?
+  id            Int         @id @default(autoincrement())
+  email         String      @unique
+  name          String?
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  images        Image[]
+  recordings    Recording[]
+  sessions      Session[]   
 }
 
-model Profile {
-  id       Int    @id @default(autoincrement())
-  userId   Int    @unique
-  imageUrl String? // Optional field for the profile image URL
-  user     User   @relation(fields: [userId], references: [id])
+model Account {
+  id                Int      @id @default(autoincrement())
+  userId            Int
+  provider          String
+  providerAccountId String   @unique
+  user              User     @relation(fields: [userId], references: [id])
+}
+
+model Session {
+  id           Int      @id @default(autoincrement())
+  sessionToken String   @unique
+  userId       Int
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id])
+}
+
+model Image {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  url       String
+  uploadedAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model Recording {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  url       String
+  uploadedAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
 }
 
