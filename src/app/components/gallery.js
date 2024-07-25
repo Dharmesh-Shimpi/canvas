@@ -1,12 +1,11 @@
-// src/components/UserUploads.js
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Loading from './loading';
 import VideoPlayer from './remotion';
 
 const POLL_INTERVAL = 5000;
 
-const UserUploads = () => {
+const Gallery = () => {
 	const [images, setImages] = useState([]);
 	const [videos, setVideos] = useState([]);
 	const [loading, setLoading] = useState(true);
@@ -85,4 +84,4 @@ const UserUploads = () => {
 	);
 };
 
-export default UserUploads;
+export default Gallery;

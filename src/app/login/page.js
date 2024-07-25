@@ -15,7 +15,7 @@ export default function LoginPage() {
 	const handleLogin = async (e) => {
 		e.preventDefault();
 		setLoading(true);
-
+		console.log('button pressed')
 		const result = await signIn('credentials', {
 			redirect: false,
 			email,
@@ -25,6 +25,7 @@ export default function LoginPage() {
 		setLoading(false);
 
 		if (result.ok) {
+
 			router.push('/');
 		} else {
 			alert('Login failed');
@@ -33,7 +34,7 @@ export default function LoginPage() {
 
 	return (
 		<div className='flex justify-center items-center h-screen w-screen bg-gray-100'>
-			<div className='w-full max-w-md p-8 space-y-4 bg-white rounded shadow-md'>
+			<div className='w-full max-w-md p-8 space-y-4 bg-white rounded 		shadow-md'>
 				<h2 className='text-2xl font-bold text-center'>Login</h2>
 				<form
 					onSubmit={handleLogin}
@@ -66,7 +67,7 @@ export default function LoginPage() {
 					</button>
 				</form>
 				<div className='text-center'>
-					<p className='text-sm'>
+					<p className='text-sm text-black'>
 						Don't have an account?{' '}
 						<Link
 							href='/register'

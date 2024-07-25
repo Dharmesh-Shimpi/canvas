@@ -62,7 +62,7 @@ export function Sidebar({ canvas }) {
 	};
 
 	return (
-		<div className=' p-2'>
+		<div className='flex flex-row p-2'>
 			<CIcon
 				icon={cilRectangle}
 				className='h-7 w-7 cursor-pointer m-2'

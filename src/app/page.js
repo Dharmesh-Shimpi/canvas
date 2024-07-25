@@ -7,7 +7,7 @@ import { CanvasProvider } from '../context/canvasContext';
 import Canvas from './canvas/page';
 import Navbar from './components/Navbar';
 import Loading from './components/loading';
-import UserUploads from './components/gallery';
+import Gallery from './components/gallery';
 
 export default function Home() {
 	const { data: session, status } = useSession();
@@ -31,8 +31,8 @@ export default function Home() {
 		<main className='flex flex-col h-screen w-screen'>
 			<CanvasProvider>
 				<Navbar />
-				<div className='flex flex-row h-5/6'>
-					<UserUploads />
+				<div className='flex flex-row h-5/6 z-0'>
+					<Gallery />
 					<Canvas />
 				</div>
 			</CanvasProvider>

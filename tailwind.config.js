@@ -20,6 +20,7 @@ module.exports = {
 				lobster: ['"Lobster"', 'cursive'],
 				indie: ['"Indie Flower"', 'cursive'],
 			},
+			
 		},
 	},
 	plugins: [],
