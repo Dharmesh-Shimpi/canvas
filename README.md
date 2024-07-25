@@ -16,18 +16,34 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+The first page to load should be home. however, if you are not logged in it will redirect you to login page from which you can go to register if you are opening the site for the first time.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+If you are, just register if successful it will take you to login page and after logging in. It will take you to home page.
 
-## Learn More
+## Login
 
-To learn more about Next.js, take a look at the following resources:
+The Login feature is created using PostreSQL and Model Object Prisma ORM:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- It has different models for user, images and videos
+- Every update is saved in the Remote database which deployed on render.com
+- Login is done using next-auth for better token and payload transfer experience, so that there is not need to send userId etc to front-end
+- Backend is handled using api routes provided by NextJS for secure access and verified access.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## FabricJS
+
+The Home page consists of Canvas, gallery and navbar which will help us create, upload and retrieve the data:
+
+- FabricJs has options to create shapes which you can upload as an image. Image will be uploaded to demo public AWS S3 bucket.
+- Gallery auto retrieves the items under userID from S3 bucket and displays on the homepage.
+- It has Images and Video tab Which shows seperate images and uploaded videos
+
+## Screen Capture
+
+Added functionality to record yourself editing on the canvas: 
+
+- It can reacord anything on the browser not just the canvas.
+- It records the file and uploads it to AWS S3 bucket with the associated userID
+
 
 ## Deploy on Vercel
 
