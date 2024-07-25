@@ -43,10 +43,3 @@ Added functionality to record yourself editing on the canvas:
 
 - It can reacord anything on the browser not just the canvas.
 - It records the file and uploads it to AWS S3 bucket with the associated userID
-
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
