@@ -1,44 +1,61 @@
-"use client";
+'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as fabric from 'fabric';
 import { Sidebar } from './sidebar';
-import { useSession, signIn } from 'next-auth/react';
+import { useCanvas } from '../../context/canvasContext';
 
 const Canvas = () => {
-	const { status } = useSession();
-	const ref = useRef();
-	const options = { height: 400, width: 800, backgroundColor: 'white' };
-	const [canvas, setCanvas] = useState();
+	const ref = useRef(null);
+	const options = { height: 600, width: 1200, backgroundColor: 'white' };
+	const { canvas, setCanvas } = useCanvas();
 
 	useEffect(() => {
-		if (status === 'unauthenticated') {
-			signIn();
+		if (ref.current) {
+			const c = new fabric.Canvas(ref.current, options);
+			setCanvas(c);
+			c.renderAll();
+			return () => {
+				setCanvas(null);
+				c.dispose();
+			};
 		}
-	}, [status]);
+	}, [setCanvas]);
 
-	useEffect(() => {
-		const c = new fabric.Canvas(ref.current, options);
-		c.renderAll();
-		setCanvas(c);
-		return () => {
-			setCanvas(null);
-			c.dispose();
-		};
-	}, []);
+	const handleDrop = (e) => {
+		e.preventDefault();
+		const url = e.dataTransfer.getData('text/plain');
+		if (url && canvas) {
+			fabric.util.loadImage(
+				url,
+				(imgElement) => {
+					const img = new fabric.Image(imgElement, {
+						left: e.clientX - ref.current.getBoundingClientRect().left,
+						top: e.clientY - ref.current.getBoundingClientRect().top,
+						selectable: true,
+						hoverCursor: 'pointer',
+					});
+					canvas.add(img);
+					canvas.renderAll();
+				},
+				(err) => {
+					console.error('Image loading error:', err);
+				},
+			);
+		}
+	};
 
-	if (status === 'loading') {
-		return <p>Loading...</p>;
-	}
-
-	if (status === 'unauthenticated') {
-		return <p>Loading...</p>;
-	}
+	const handleDragOver = (e) => {
+		e.preventDefault();
+	};
 
 	return (
-		<div className='flex justify-center flex-row items-center bg-emerald-400 h-5/6 w-5/6 border-2 border-slate-600 border-solid'>
+		<div
+			className='flex justify-start items-center bg-gradient-to-r from-pink-500 to-green-500 h-full w-5/6 z-0'
+			onDrop={handleDrop}
+			onDragOver={handleDragOver}>
 			<Sidebar canvas={canvas} />
-			<canvas ref={ref} />
+			<canvas ref={ref}></canvas>
 		</div>
 	);
 };

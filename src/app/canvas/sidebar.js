@@ -62,26 +62,26 @@ export function Sidebar({ canvas }) {
 	};
 
 	return (
-		<div>
+		<div className=' p-2'>
 			<CIcon
 				icon={cilRectangle}
-				className='h-5 w-5 cursor-pointer'
+				className='h-7 w-7 cursor-pointer m-2'
 				onClick={addRectangle}
 			/>
 			<CIcon
 				icon={cilCircle}
-				className='h-5 w-5 cursor-pointer'
+				className='h-7 w-7 cursor-pointer m-2'
 				onClick={addCircle}
 			/>
 			<CIcon
 				icon={cilTriangle}
-				className='h-5 w-5 cursor-pointer'
+				className='h-7 w-7 cursor-pointer m-2'
 				onClick={addTriangle}
 			/>
 			<p
 				onClick={addLine}
-				className='h-5 w-5 cursor-pointer'>
-				|
+				className='text-3xl cursor-pointer m-2'>
+				\
 			</p>
 		</div>
 	);
