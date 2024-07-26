@@ -7,12 +7,17 @@ import { useCanvas } from '../../context/canvasContext';
 
 const Canvas = () => {
 	const ref = useRef(null);
-	const options = { height: 600, width: 1200, backgroundColor: 'white' };
-	const { canvas, setCanvas } = useCanvas();
+	const options = { height: 600, width: 1200, backgroundColor: 'gray' };
+	const { canvas, setCanvas, setThumbnail } = useCanvas();
 
 	useEffect(() => {
 		if (ref.current) {
 			const c = new fabric.Canvas(ref.current, options);
+			const thumbnailDataUrl = c.toDataURL({
+				format: 'png',
+				multiplier: 0.25, // Scale down the image if needed
+			});
+			setThumbnail(thumbnailDataUrl);
 			setCanvas(c);
 			c.renderAll();
 			return () => {
@@ -51,7 +56,7 @@ const Canvas = () => {
 
 	return (
 		<div
-			className='flex flex-col justify-start items-center bg-gradient-to-br from-gray-500 to-gray-800 h-full w-5/6 z-0'
+			className='flex flex-col justify-start items-center bg-gradient-to-br from-gray-500 to-gray-800 h-full w-3/4 z-0'
 			onDrop={handleDrop}
 			onDragOver={handleDragOver}>
 			<Sidebar canvas={canvas} />

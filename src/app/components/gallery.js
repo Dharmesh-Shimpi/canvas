@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Loading from './loading';
 import VideoPlayer from './remotion';
+import { useCanvas } from '@/context/canvasContext';
 
 const POLL_INTERVAL = 5000;
 
@@ -11,12 +12,13 @@ const Gallery = () => {
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
 	const [selectedVideo, setSelectedVideo] = useState(null);
-
+	const { thumbnail } = useCanvas();
 	const fetchUploads = async () => {
 		try {
 			const response = await axios.get('/api/fetch');
 			setImages(response.data.images);
 			setVideos(response.data.videos);
+			console.log(videos);
 		} catch (err) {
 			setError(err);
 		} finally {
@@ -37,9 +39,9 @@ const Gallery = () => {
 
 	return (
 		<>
-			<div className='flex w-1/6 flex-row bg-gray-500'>
+			<div className='flex w-1/4 flex-row bg-gray-500'>
 				<div className='flex justify-start flex-col w-1/2 items-center'>
-					<h2>Images</h2>
+					<h2 className='mt-5'>Images</h2>
 					{images ? (
 						images.map((upload) => (
 							<img
@@ -55,14 +57,14 @@ const Gallery = () => {
 				</div>
 
 				<div className='flex justify-start flex-col w-1/2 items-center'>
-					<h2>Videos</h2>
+					<h2 className='mt-5'>Videos</h2>
 					{videos ? (
 						videos.map((upload) => (
 							<div
 								key={upload.id}
 								className='w-full h-auto border border-gray-200 rounded shadow cursor-pointer'
 								onClick={() => setSelectedVideo(upload.url)}>
-								<p className='text-center'>{upload.id}</p>
+								<p className='text-center'>click here</p>
 							</div>
 						))
 					) : (
