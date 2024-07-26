@@ -45,7 +45,7 @@ const Gallery = () => {
 	if (error) return <p>Error loading uploads: {error.message}</p>;
 
 	return (
-		<div className='flex justify-start flex-col w-2/6 items-center bg-gray-500'>
+		<div className='flex justify-start flex-col w-2/6 items-center bg-gray-500 overflow-auto '>
 			<div className='flex flex-row justify-center items-center'>
 				<CIcon
 					className='h-7 w-7 m-2'
@@ -55,7 +55,6 @@ const Gallery = () => {
 					className='my-5 text-xl
 
 			'>
-					
 					Images
 				</h2>
 			</div>
@@ -65,7 +64,7 @@ const Gallery = () => {
 						key={upload.id}
 						src={upload.url}
 						alt={`Upload ${upload.id}`}
-						className=' w-5/6 rounded-lg shadow m-2'
+						className=' w-5/6 rounded-lg shadow-lg m-2'
 						onClick={(e) => handleImageClick(e, upload.url)}
 					/>
 				))
