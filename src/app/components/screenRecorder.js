@@ -1,5 +1,7 @@
 import { useState, useRef } from 'react';
 import axios from 'axios';
+import CIcon from '@coreui/icons-react';
+import { cilMediaPlay, cilMediaStop, cilSave } from '@coreui/icons';
 
 const ScreenRecorder = () => {
 	const [isRecording, setIsRecording] = useState(false);
@@ -66,24 +68,39 @@ const ScreenRecorder = () => {
 	};
 
 	return (
-		<div className='flex flex-row w-45 text-white '>
+		<div className='flex flex-row w-45 h-fit text-white '>
 			{!isRecording ? (
 				<button
 					onClick={startRecording}
-					className='text-sm p-2 hover:text-purple-300'>
+					className='text-sm p-2 hover:text-purple-300 flex flex-row justify-center items-center'>
+					<CIcon
+						icon={cilMediaPlay}
+						className='
+					h-7 w-7 m-2'
+					/>
 					Start Recording
 				</button>
 			) : (
 				<button
 					onClick={stopRecording}
-					className='text-sm p-2 hover:text-purple-300'>
+					className='text-sm p-2 hover:text-purple-300 flex flex-row justify-center items-center'>
+					<CIcon
+						icon={cilMediaStop}
+						className='
+					h-7 w-7 m-2'
+					/>
 					Stop Recording
 				</button>
 			)}
 			{recordedBlob && !isRecording && (
 				<button
 					onClick={saveRecording}
-					className='text-sm p-2 hover:text-purple-300'>
+					className='text-sm p-2 hover:text-purple-300 flex flex-row justify-center items-center'>
+					<CIcon
+						icon={cilSave}
+						className='
+					h-7 w-7 m-2 '
+					/>
 					Save Recording
 				</button>
 			)}

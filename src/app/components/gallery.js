@@ -1,24 +1,23 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Loading from './loading';
-import VideoPlayer from './remotion';
+import * as fabric from 'fabric';
 import { useCanvas } from '@/context/canvasContext';
+import CIcon from '@coreui/icons-react';
+import { cilImage } from '@coreui/icons';
 
 const POLL_INTERVAL = 5000;
 
 const Gallery = () => {
 	const [images, setImages] = useState([]);
-	const [videos, setVideos] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
-	const [selectedVideo, setSelectedVideo] = useState(null);
-	const { thumbnail } = useCanvas();
+	const { canvas } = useCanvas();
+
 	const fetchUploads = async () => {
 		try {
 			const response = await axios.get('/api/fetch');
 			setImages(response.data.images);
-			setVideos(response.data.videos);
-			console.log(videos);
 		} catch (err) {
 			setError(err);
 		} finally {
@@ -28,61 +27,52 @@ const Gallery = () => {
 
 	useEffect(() => {
 		fetchUploads();
-
 		const intervalId = setInterval(fetchUploads, POLL_INTERVAL);
-
 		return () => clearInterval(intervalId);
 	}, []);
+
+	const handleImageClick = (e, url) => {
+		e.preventDefault();
+		if (canvas) {
+			fabric.Image.fromURL(url, (img) => {
+				canvas.add(img);
+				canvas.renderAll();
+			});
+		}
+	};
 
 	if (loading) return <Loading />;
 	if (error) return <p>Error loading uploads: {error.message}</p>;
 
 	return (
-		<>
-			<div className='flex w-1/4 flex-row bg-gray-500'>
-				<div className='flex justify-start flex-col w-1/2 items-center'>
-					<h2 className='mt-5'>Images</h2>
-					{images ? (
-						images.map((upload) => (
-							<img
-								key={upload.id}
-								src={upload.url}
-								alt={`Upload ${upload.id}`}
-								className=' w-1/2 border-gray-200 rounded shadow mb-2'
-							/>
-						))
-					) : (
-						<p>Add Images</p>
-					)}
-				</div>
+		<div className='flex justify-start flex-col w-2/6 items-center bg-gray-500'>
+			<div className='flex flex-row justify-center items-center'>
+				<CIcon
+					className='h-7 w-7 m-2'
+					icon={cilImage}
+				/>
+				<h2
+					className='my-5 text-xl
 
-				<div className='flex justify-start flex-col w-1/2 items-center'>
-					<h2 className='mt-5'>Videos</h2>
-					{videos ? (
-						videos.map((upload) => (
-							<div
-								key={upload.id}
-								className='w-full h-auto border border-gray-200 rounded shadow cursor-pointer'
-								onClick={() => setSelectedVideo(upload.url)}>
-								<p className='text-center'>click here</p>
-							</div>
-						))
-					) : (
-						<p>Add Videos</p>
-					)}
-				</div>
+			'>
+					
+					Images
+				</h2>
 			</div>
-			{selectedVideo && (
-				<div className='fixed h-72 w-96 top-48 left-96 z-10 '>
-					<button
-						onClick={() => setSelectedVideo(null)}
-						className='relative text-gray-700 text-2xl border-black border-2 rounded-lg w-10'>
-						&times;
-					</button>
-					<VideoPlayer videoUrl={selectedVideo} />
-				</div>
+			{images ? (
+				images.map((upload) => (
+					<img
+						key={upload.id}
+						src={upload.url}
+						alt={`Upload ${upload.id}`}
+						className=' w-5/6 rounded-lg shadow m-2'
+						onClick={(e) => handleImageClick(e, upload.url)}
+					/>
+				))
+			) : (
+				<p>Add Images</p>
 			)}
-		</>
+		</div>
 	);
 };
 

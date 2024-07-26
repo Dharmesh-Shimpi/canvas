@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { CIcon } from '@coreui/icons-react';
+import { cilCloudUpload } from '@coreui/icons';
 
 export const Image = ({ canvas }) => {
 	const uploadImage = async () => {
@@ -16,7 +18,11 @@ export const Image = ({ canvas }) => {
 	return (
 		<button
 			onClick={uploadImage}
-			className='text-sm p-2 hover:text-purple-300'>
+			className='text-sm p-2 hover:text-purple-300 flex flex-row justify-center items-center'>
+			<CIcon
+				icon={cilCloudUpload}
+				className='h-7 w-7 m-2'
+			/>
 			Upload Image
 		</button>
 	);

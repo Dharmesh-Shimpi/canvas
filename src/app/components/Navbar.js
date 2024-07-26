@@ -19,7 +19,7 @@ const Navbar = () => {
 	};
 
 	return (
-		<nav className='flex flex-row justify-between bg-gradient-to-tr from-gray-500 to-gray-800 text-white text-xl w-full h-24 z-10 drop-shadow-2xl '>
+		<nav className='flex flex-row justify-between items-center bg-gradient-to-tr from-gray-500 to-gray-800 text-white text-xl w-full h-24 z-10 drop-shadow-2xl '>
 			<p className='flex items-center bg-clip-text text-transparent ml-9  text-6xl bg-gradient-to-tl from-purple-500 to-green-300 antialiased font-thin'>
 				Canvas
 			</p>
@@ -29,7 +29,11 @@ const Navbar = () => {
 				<Image canvas={canvas} />
 				<button
 					onClick={handleSignOut}
-					className='text-sm p-2 hover:text-purple-300'>
+					className='text-sm p-2 hover:text-purple-300 flex flex-row justify-center items-center'>
+					<CIcon
+						icon={cilAccountLogout}
+						className='h-7 w-7 m-2'
+					/>
 					Sign Out
 				</button>
 			</div>

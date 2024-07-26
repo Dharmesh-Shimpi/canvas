@@ -7,17 +7,18 @@ import { useCanvas } from '../../context/canvasContext';
 
 const Canvas = () => {
 	const ref = useRef(null);
-	const options = { height: 600, width: 1200, backgroundColor: 'gray' };
-	const { canvas, setCanvas, setThumbnail } = useCanvas();
+	const { canvas, setCanvas } = useCanvas();
 
 	useEffect(() => {
 		if (ref.current) {
+			const options = {
+				height: 400,
+				width: 900,
+				backgroundColor: '#494d57',
+			};
+
 			const c = new fabric.Canvas(ref.current, options);
-			const thumbnailDataUrl = c.toDataURL({
-				format: 'png',
-				multiplier: 0.25, // Scale down the image if needed
-			});
-			setThumbnail(thumbnailDataUrl);
+
 			setCanvas(c);
 			c.renderAll();
 			return () => {
@@ -27,39 +28,9 @@ const Canvas = () => {
 		}
 	}, [setCanvas]);
 
-	const handleDrop = (e) => {
-		e.preventDefault();
-		const url = e.dataTransfer.getData('text/plain');
-		if (url && canvas) {
-			fabric.util.loadImage(
-				url,
-				(imgElement) => {
-					const img = new fabric.Image(imgElement, {
-						left: e.clientX - ref.current.getBoundingClientRect().left,
-						top: e.clientY - ref.current.getBoundingClientRect().top,
-						selectable: true,
-						hoverCursor: 'pointer',
-					});
-					canvas.add(img);
-					canvas.renderAll();
-				},
-				(err) => {
-					console.error('Image loading error:', err);
-				},
-			);
-		}
-	};
-
-	const handleDragOver = (e) => {
-		e.preventDefault();
-	};
-
 	return (
-		<div
-			className='flex flex-col justify-start items-center bg-gradient-to-br from-gray-500 to-gray-800 h-full w-3/4 z-0'
-			onDrop={handleDrop}
-			onDragOver={handleDragOver}>
-			<Sidebar canvas={canvas} />
+		<div className='container mx-0 flex flex-col justify-evenly items-center bg-gradient-to-br from-gray-500 to-gray-800 h-full w-3/4 z-0'>
+			<Sidebar />
 			<canvas ref={ref}></canvas>
 		</div>
 	);

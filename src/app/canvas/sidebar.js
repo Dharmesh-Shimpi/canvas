@@ -3,8 +3,10 @@
 import * as fabric from 'fabric';
 import { CIcon } from '@coreui/icons-react';
 import { cilRectangle, cilCircle, cilTriangle } from '@coreui/icons';
+import { useCanvas } from '../../context/canvasContext';
 
-export function Sidebar({ canvas }) {
+export function Sidebar() {
+	const { canvas } = useCanvas();
 	const addRectangle = () => {
 		if (canvas) {
 			const rect = new fabric.Rect({
@@ -17,6 +19,7 @@ export function Sidebar({ canvas }) {
 				strokeWidth: 2,
 			});
 			canvas.add(rect);
+			canvas.renderAll();
 		}
 	};
 
@@ -31,6 +34,7 @@ export function Sidebar({ canvas }) {
 				strokeWidth: 2,
 			});
 			canvas.add(circle);
+			canvas.renderAll();
 		}
 	};
 
@@ -46,6 +50,7 @@ export function Sidebar({ canvas }) {
 				strokeWidth: 2,
 			});
 			canvas.add(triangle);
+			canvas.renderAll();
 		}
 	};
 
@@ -58,29 +63,31 @@ export function Sidebar({ canvas }) {
 				strokeWidth: 2,
 			});
 			canvas.add(line);
+			canvas.renderAll();
 		}
 	};
 
 	return (
-		<div className='flex flex-row p-2'>
+		<div className='flex flex-row justify-end items-center mx-10'>
+			<p className='mx-1'>Shapes :</p>
 			<CIcon
 				icon={cilRectangle}
-				className='h-7 w-7 cursor-pointer m-2'
+				className='h-10 w-9 cursor-pointer m-2 hover:text-gray-400 font-thin'
 				onClick={addRectangle}
 			/>
 			<CIcon
 				icon={cilCircle}
-				className='h-7 w-7 cursor-pointer m-2'
+				className='h-7 w-7 cursor-pointer m-2 hover:text-gray-400'
 				onClick={addCircle}
 			/>
 			<CIcon
 				icon={cilTriangle}
-				className='h-7 w-7 cursor-pointer m-2'
+				className='h-7 w-7 cursor-pointer m-2 hover:text-gray-400'
 				onClick={addTriangle}
 			/>
 			<p
 				onClick={addLine}
-				className='text-3xl cursor-pointer m-2'>
+				className='text-3xl cursor-pointer m-2 hover:text-gray-400'>
 				\
 			</p>
 		</div>
