@@ -81,7 +81,7 @@ export function Sidebar() {
 			<div
 				className={`${
 					visible ? css.display : css.none
-				} border rounded-full shadow-lg px-3 bg-gray-600`}>
+				} rounded-full shadow-lg px-3 bg-gray-500`}>
 				<p
 					className='mx-1 cursor-pointer flex items-center hover:text-purple-300'
 					onClick={addRectangle}>
