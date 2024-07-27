@@ -1,36 +1,36 @@
 import { PrismaClient } from '@prisma/client';
-import { authOptions } from '../auth/[...nextauth]/route';
 import { getServerSession } from 'next-auth/next';
+import { authOptions } from '../auth/[...nextauth]/route';
+import { NextResponse } from 'next/server';
 
 const prisma = new PrismaClient();
 
 export async function GET(req) {
 	try {
-		const session = await getServerSession(authOptions);
+		const session = await getServerSession({ req, ...authOptions });
+
 		if (!session) {
 			return new Response(JSON.stringify({ error: 'Not authenticated' }), {
 				status: 401,
 			});
 		}
+
 		const userId = session.user.id;
-		console.log(userId);
 
 		const images = await prisma.image.findMany({
-			where: { userId},
-        });
-        
-        const videos = await prisma.recording.findMany({
-            where: { userId },
-        });
+			where: { userId },
+		});
 
-		return new Response(JSON.stringify({ images, videos }), {
-			status: 200,
-        });
-        
+		const videos = await prisma.recording.findMany({
+			where: { userId },
+		});
+
+		return NextResponse.json({ images, videos }, { status: 200 });
 	} catch (error) {
 		console.error('Error fetching uploads:', error);
-		return new Response(JSON.stringify({ error: 'Error fetching uploads' }), {
-			status: 500,
-		});
+		return NextResponse.json(
+			{ error: 'Error fetching uploads' },
+			{ status: 500 },
+		);
 	}
 }

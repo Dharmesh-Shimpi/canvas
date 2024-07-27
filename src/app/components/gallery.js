@@ -41,9 +41,6 @@ const Gallery = () => {
 		}
 	};
 
-	if (loading) return <Loading />;
-	if (error) return <p>Error loading uploads: {error.message}</p>;
-
 	return (
 		<div className='flex justify-start flex-col w-2/6 items-center bg-gray-500 overflow-auto '>
 			<div className='flex flex-row justify-center items-center'>
@@ -58,6 +55,8 @@ const Gallery = () => {
 					Images
 				</h2>
 			</div>
+			{loading && <Loading />}
+			{error && <p>Error loading uploads: {error.message}</p>}
 			{images ? (
 				images.map((upload) => (
 					<img

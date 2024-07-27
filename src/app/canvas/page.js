@@ -29,9 +29,11 @@ const Canvas = () => {
 	}, [setCanvas]);
 
 	return (
-		<div className='container mx-0 flex flex-col justify-evenly items-center bg-gradient-to-br from-gray-500 to-gray-800 h-full w-3/4 z-0'>
-			<Sidebar />
-			<canvas ref={ref}></canvas>
+		<div className='container mx-0 flex flex-col justify-around items-center bg-gradient-to-br from-gray-500 to-gray-800 h-full w-3/4 z-0'>
+			<div className='flex flex-col items-start'>
+				<Sidebar />
+				<canvas ref={ref}></canvas>
+			</div>
 		</div>
 	);
 };

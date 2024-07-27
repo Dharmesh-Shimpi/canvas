@@ -31,3 +31,24 @@ body {
     text-wrap: balance;
   }
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #747474;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #5e5e5e;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #515050;
+}
