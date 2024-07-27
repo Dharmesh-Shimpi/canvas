@@ -32,7 +32,9 @@ const Canvas = () => {
 		<div className='container mx-0 flex flex-col justify-around items-center bg-gradient-to-br from-gray-500 to-gray-800 h-full w-3/4 z-0'>
 			<div className='flex flex-col items-start'>
 				<Sidebar />
-				<canvas ref={ref}></canvas>
+				<canvas
+					className='shadow-xl'
+					ref={ref}></canvas>
 			</div>
 		</div>
 	);

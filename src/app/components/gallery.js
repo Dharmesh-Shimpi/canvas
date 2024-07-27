@@ -42,34 +42,31 @@ const Gallery = () => {
 	};
 
 	return (
-		<div className='flex justify-start flex-col w-2/6 items-center bg-gray-500 overflow-auto '>
-			<div className='flex flex-row justify-center items-center'>
+		<div className='flex justify-start flex-col w-2/6 items-center bg-gray-500 overflow-auto shadow-xl'>
+			<div className='flex flex-row justify-center items-center fixed shadow-xl h-15 w-fit z-10'>
 				<CIcon
 					className='h-7 w-7 m-2'
 					icon={cilImage}
 				/>
-				<h2
-					className='my-5 text-xl
-
-			'>
-					Images
-				</h2>
+				<h2 className='my-5 text-xl text-center'>Images</h2>
 			</div>
-			{loading && <Loading />}
-			{error && <p>Error loading uploads: {error.message}</p>}
-			{images ? (
-				images.map((upload) => (
-					<img
-						key={upload.id}
-						src={upload.url}
-						alt={`Upload ${upload.id}`}
-						className=' w-5/6 rounded-lg shadow-lg m-2'
-						onClick={(e) => handleImageClick(e, upload.url)}
-					/>
-				))
-			) : (
-				<p>Add Images</p>
-			)}
+			<div className=' flex flex-col justify-start items-center relative top-20 z-0'>
+				{loading && <Loading />}
+				{error && <p>Error loading uploads</p>}
+				{images ? (
+					images.map((upload) => (
+						<img
+							key={upload.id}
+							src={upload.url}
+							alt={`Upload ${upload.id}`}
+							className=' w-5/6 rounded-lg shadow-lg m-2'
+							onClick={(e) => handleImageClick(e, upload.url)}
+						/>
+					))
+				) : (
+					<p>Add Images</p>
+				)}
+			</div>
 		</div>
 	);
 };
