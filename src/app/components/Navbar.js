@@ -19,8 +19,8 @@ const Navbar = () => {
 	};
 
 	return (
-		<nav className='flex flex-row justify-between items-center bg-gradient-to-tr from-gray-500 to-gray-800 text-white text-xl w-full h-24 z-10 drop-shadow-2xl '>
-			<p className='flex items-center bg-clip-text text-transparent ml-9  text-6xl bg-gradient-to-tl from-purple-500 to-green-300 antialiased font-thin'>
+		<nav className='flex flex-row justify-between items-center bg-gradient-to-tr from-gray-500 to-gray-800 text-white w-full h-1/8 z-10 drop-shadow-2xl '>
+			<p className='flex items-center bg-clip-text text-transparent ml-9  text-5xl bg-gradient-to-tl from-purple-500 to-green-300 antialiased font-thin'>
 				Canvas
 			</p>
 

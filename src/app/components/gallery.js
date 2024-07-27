@@ -42,13 +42,14 @@ const Gallery = () => {
 	};
 
 	return (
-		<div className='flex justify-start flex-col w-2/6 items-center bg-gray-500  shadow-xl relative'>
-			<div className='flex flex-row justify-center items-center shadow-xl h-15 w-full z-10'>
+		<div className='flex justify-start flex-col w-1/6 items-center bg-gray-500  shadow-xl'>
+			<div className='flex flex-row justify-start items-end
+			 drop-shadow-md py-5 h-30 w-5/6 z-10'>
 				<CIcon
-					className='h-7 w-7 m-2'
+					className='h-6 mx-2'
 					icon={cilImage}
 				/>
-				<h2 className='my-5 text-xl text-center'>Images</h2>
+				<h2 className=' text-base'>Images</h2>
 			</div>
 			<div className=' overflow-auto flex flex-col justify-start items-center relative pt-5 z-0'>
 				{loading && <Loading />}

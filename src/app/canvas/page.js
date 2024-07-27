@@ -12,8 +12,8 @@ const Canvas = () => {
 	useEffect(() => {
 		if (ref.current) {
 			const options = {
-				height: 400,
-				width: 900,
+				height: '300',
+				width: '500',
 				backgroundColor: '#494d57',
 			};
 
@@ -29,8 +29,8 @@ const Canvas = () => {
 	}, [setCanvas]);
 
 	return (
-		<div className='container mx-0 flex flex-col justify-around items-center bg-gradient-to-br from-gray-500 to-gray-800 h-full w-3/4 z-0'>
-			<div className='flex flex-col items-start'>
+		<div className='container mx-0 flex flex-col bg-gradient-to-br from-gray-500 to-gray-800 h-full w-5/6 z-0 '>
+			<div className='flex flex-col items-start '>
 				<Sidebar />
 				<canvas
 					className='shadow-xl'

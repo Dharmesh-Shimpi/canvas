@@ -31,7 +31,7 @@ export default function Home() {
 		<main className='flex flex-col h-screen w-screen'>
 			<CanvasProvider>
 				<Navbar />
-				<div className='flex flex-row h-5/6 z-0'>
+				<div className='flex flex-row h-5/6 z-0 w-screen '>
 					<Gallery />
 					<Canvas />
 				</div>
