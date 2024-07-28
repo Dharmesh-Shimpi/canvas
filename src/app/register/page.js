@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import Link from 'next/link';
 import Loading from '../components/loading';
+import Logo from '../components/Logo';
 
 export default function RegisterPage() {
 	const [email, setEmail] = useState('');
@@ -37,14 +38,18 @@ export default function RegisterPage() {
 	};
 
 	return (
-		<div className='flex justify-center items-center h-screen w-screen bg-gray-100'>
-			<div className='w-full max-w-md p-8 space-y-4 bg-white rounded shadow-md'>
-				<h2 className='text-2xl font-bold text-center'>Register</h2>
+		<div className='flex flex-col justify-center items-center h-screen w-screen bg-gradient-to-br from-gray-500 to-gray-800 relative'>
+			<div className='relative top-0'>
+				<Logo />
+			</div>
+
+			<div className='w-full max-w-md p-8 space-y-4 border-gray-600 border rounded shadow-2xl'>
+				<h2 className='text-lg font-bold text-center '>Register</h2>
 				<form
 					onSubmit={handleRegister}
 					className='space-y-4'>
 					<div>
-						<label className='block text-sm font-medium text-gray-700'>Email</label>
+						<label className='block text-sm font-medium '>Email</label>
 						<input
 							type='email'
 							value={email}
@@ -53,9 +58,7 @@ export default function RegisterPage() {
 						/>
 					</div>
 					<div>
-						<label className='block text-sm font-medium text-gray-700'>
-							Password
-						</label>
+						<label className='block text-sm font-medium '>Password</label>
 						<input
 							type='password'
 							value={password}
@@ -71,7 +74,7 @@ export default function RegisterPage() {
 					</button>
 				</form>
 				<div className='text-center'>
-					<p className='text-sm text-black'>
+					<p className='text-sm '>
 						Already have an account?{' '}
 						<Link
 							href='/login'

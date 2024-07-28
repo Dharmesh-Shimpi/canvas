@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { signIn } from 'next-auth/react';
 import Link from 'next/link';
 import Loading from '../components/loading';
+import Logo from '../components/Logo';
 
 export default function LoginPage() {
 	const [email, setEmail] = useState('');
@@ -15,7 +16,7 @@ export default function LoginPage() {
 	const handleLogin = async (e) => {
 		e.preventDefault();
 		setLoading(true);
-		console.log('button pressed')
+		console.log('button pressed');
 		const result = await signIn('credentials', {
 			redirect: false,
 			email,
@@ -25,7 +26,6 @@ export default function LoginPage() {
 		setLoading(false);
 
 		if (result.ok) {
-
 			router.push('/');
 		} else {
 			alert('Login failed');
@@ -33,25 +33,27 @@ export default function LoginPage() {
 	};
 
 	return (
-		<div className='flex justify-center items-center h-screen w-screen bg-gray-100'>
-			<div className='w-full max-w-md p-8 space-y-4 bg-white rounded 		shadow-md'>
-				<h2 className='text-2xl font-bold text-center'>Login</h2>
+		<div className='flex flex-col justify-center items-center h-screen w-screen bg-gradient-to-br from-gray-500 to-gray-800 relative'>
+			<div className='relative top-0'>
+				<Logo />
+			</div>
+
+			<div className='w-full max-w-md p-8 space-y-4 border-gray-600 border rounded shadow-2xl'>
+				<h2 className='text-lg font-bold text-center'>Login</h2>
 				<form
 					onSubmit={handleLogin}
 					className='space-y-4'>
 					<div>
-						<label className='block text-sm font-medium text-gray-700'>Email</label>
+						<label className='block text-sm font-medium '>Email</label>
 						<input
 							type='email'
 							value={email}
 							onChange={(e) => setEmail(e.target.value)}
-							className='block w-full p-2 mt-1 border border-gray-300 rounded text-black'
+							className='block w-full p-2 mt-1 border border-gray-200 rounded text-black'
 						/>
 					</div>
 					<div>
-						<label className='block text-sm font-medium text-gray-700'>
-							Password
-						</label>
+						<label className='block text-sm font-medium '>Password</label>
 						<input
 							type='password'
 							value={password}
@@ -67,7 +69,7 @@ export default function LoginPage() {
 					</button>
 				</form>
 				<div className='text-center'>
-					<p className='text-sm text-black'>
+					<p className='text-sm'>
 						Don't have an account?{' '}
 						<Link
 							href='/register'

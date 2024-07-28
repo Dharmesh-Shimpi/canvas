@@ -7,7 +7,7 @@ import { useCanvas } from '../../context/canvasContext';
 import ScreenRecorder from './screenRecorder';
 import CIcon from '@coreui/icons-react';
 import { cilAccountLogout } from '@coreui/icons';
-import css from './Navbar.module.css';
+import Logo from './Logo';
 
 const Navbar = () => {
 	const router = useRouter();
@@ -20,21 +20,22 @@ const Navbar = () => {
 	};
 
 	return (
-		<nav className='flex flex-row justify-between items-center bg-gradient-to-tr from-gray-500 to-gray-800 text-white w-full h-20 z-10 drop-shadow-2xl '>
-			<p className={`font-thin ${css.text} ${css.customGradient}`}>Canvas</p>
-
-			<div className='flex flex-row w-120 mr-9 text-white'>
-				<ScreenRecorder />
-				<Image canvas={canvas} />
-				<button
-					onClick={handleSignOut}
-					className='text-sm p-2 hover:text-purple-300 flex flex-row justify-center items-center'>
-					<CIcon
-						icon={cilAccountLogout}
-						className='h-6 m-2'
-					/>
-					Sign Out
-				</button>
+		<nav className='flex justify-center items-center bg-gradient-to-tr from-gray-500 to-gray-800 text-white w-full h-20 z-10 drop-shadow-2xl '>
+			<div className='flex flex-row justify-between items-center  text-white w-5/6 min-w h-20'>
+				<Logo />
+				<div className='flex flex-row w-120 mr-9 text-white'>
+					<ScreenRecorder />
+					<Image canvas={canvas} />
+					<button
+						onClick={handleSignOut}
+						className='text-sm p-2 hover:text-purple-300 flex flex-row justify-center items-center'>
+						<CIcon
+							icon={cilAccountLogout}
+							className='h-6 m-2'
+						/>
+						Sign Out
+					</button>
+				</div>
 			</div>
 		</nav>
 	);

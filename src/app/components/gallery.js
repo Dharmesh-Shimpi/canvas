@@ -6,7 +6,7 @@ import { useCanvas } from '@/context/canvasContext';
 import CIcon from '@coreui/icons-react';
 import { cilImage } from '@coreui/icons';
 
-const POLL_INTERVAL = 5000;
+const POLL_INTERVAL = 1000;
 
 const Gallery = () => {
 	const [images, setImages] = useState([]);
@@ -43,32 +43,31 @@ const Gallery = () => {
 			});
 		}
 	};
+	
 
 	return (
-		<div className='flex justify-start flex-col w-1/6 items-center bg-gray-500 shadow-xl'>
-			<div className='flex flex-row justify-start items-end drop-shadow-md py-5 h-30 w-5/6 z-10'>
+		<div className='container flex justify-start flex-col h-full w-[200px] items-center bg-gray-500 shadow-xl m-5 rounded-xl'>
+			<div className='flex flex-row justify-center items-end drop-shadow-md py-5 z-10 mx-5'>
 				<CIcon
-					className='h-6 mx-2'
+					className='h-6'
 					icon={cilImage}
 				/>
-				<h2 className=' text-base'>Images</h2>
+				<h2 className=' text-base mx-2'>Images</h2>
 			</div>
-			<div className=' overflow-auto flex flex-col justify-start items-center relative pt-5 z-0'>
-				{loading && <Loading />}
-				{error && <p>Error loading uploads</p>}
-				{images.length > 0 ? (
-					images.map((upload) => (
-						<img
-							key={upload.id}
-							src={upload.url}
-							alt={`Upload ${upload.id}`}
-							className='w-5/6 rounded-lg shadow-lg m-2 cursor-pointer'
-							onClick={(e) => handleImageClick(e, upload.url)}
-						/>
-					))
-				) : (
-					<p>Add Images</p>
-				)}
+			{loading && <Loading />}
+			{error && <p>Error loading uploads</p>}
+			<div className=' overflow-auto flex flex-col justify-start items-center relative z-0'>
+				{!loading && images.length > 0
+					? images.map((upload) => (
+							<img
+								key={upload.id}
+								src={upload.url}
+								alt={`Upload ${upload.id}`}
+								className='w-11/12 rounded-lg shadow-lg m-2 cursor-pointer'
+								onClick={(e) => handleImageClick(e, upload.url)}
+							/>
+					  ))
+					: !loading && <p className='m-5'>Upload Images to show here!!</p>}
 			</div>
 		</div>
 	);

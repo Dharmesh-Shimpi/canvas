@@ -2,13 +2,13 @@
 	background: linear-gradient(
 		to top left,
 		#7e5bef,
-		#ec4899,
-		#f43f5e,
 		#fbbf24,
-		#10b981
+		#ec4899,
+		#10b981,
+		#f43f5e
 	);
 	background-size: 500% 500%;
-	animation: rotate-background 10s linear infinite;
+	animation: rotate-background 30s linear infinite;
 }
 
 @keyframes rotate-background {
@@ -16,13 +16,13 @@
 		background-position: 0% 0%;
 	}
 	25% {
-		background-position: 50% 50%;
+		background-position: 0% 100%;
 	}
 	50% {
 		background-position: 100% 100%;
 	}
 	75% {
-		background-position: 50% 50%;
+		background-position: 100% 0%;
 	}
 
 	100% {
@@ -36,7 +36,7 @@
 	background-clip: text;
 	-webkit-background-clip: text;
 	color: transparent;
-	margin-left: 2.25rem;
-	font-size: 3rem;
+	/* margin-left: 2.25rem; */
+	font-size: 4.5rem;
 	-webkit-font-smoothing: antialiased;
 }

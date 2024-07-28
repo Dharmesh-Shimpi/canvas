@@ -24,16 +24,22 @@ export default function Home() {
 	}, [status, session, router]);
 
 	if (status === 'loading') {
-		return <Loading />;
+		return (
+			<main className=' flex justify-center items-center h-screen w-screen'>
+				<Loading />
+			</main>
+		);
 	}
 
 	return (
 		<main className=' flex flex-col h-screen w-screen'>
 			<CanvasProvider>
 				<Navbar />
-				<div className='flex flex-row  h-full w-full'>
-					<Gallery />
-					<Canvas />
+				<div className='overflow-auto flex justify-center items-center h-full w-full bg-gradient-to-br from-gray-500 to-gray-800'>
+					<div className=' flex flex-row max-h-full max-w-full'>
+						<Gallery />
+						<Canvas />
+					</div>
 				</div>
 			</CanvasProvider>
 		</main>
