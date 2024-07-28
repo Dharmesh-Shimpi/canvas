@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from 'react';
 import * as fabric from 'fabric';
 import { Sidebar } from './sidebar';
 import { useCanvas } from '../../context/canvasContext';
+import css from './canvas.module.css';
 
 const Canvas = () => {
 	const ref = useRef(null);
@@ -29,7 +30,7 @@ const Canvas = () => {
 	}, [setCanvas]);
 
 	return (
-		<div className='container mx-0 flex flex-col bg-gradient-to-br from-gray-500 to-gray-800 h-full w-5/6 z-0 '>
+		<div className='overflow-auto mx-0 flex flex-col bg-gradient-to-br from-gray-500 to-gray-800 h-full w-5/6 z-0 '>
 			<div className='flex flex-col items-start '>
 				<Sidebar />
 				<canvas

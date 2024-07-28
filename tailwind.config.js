@@ -19,8 +19,7 @@ module.exports = {
 				greatvibes: ['"Great Vibes"', 'cursive'],
 				lobster: ['"Lobster"', 'cursive'],
 				indie: ['"Indie Flower"', 'cursive'],
-			},
-			
+			},		
 		},
 	},
 	plugins: [],

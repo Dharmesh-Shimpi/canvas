@@ -67,7 +67,7 @@ export function Sidebar() {
 	};
 
 	return (
-		<div className='flex flex-row justify-end items-center my-2 h-10 '>
+		<div className='flex flex-row justify-end items-center my-5 h-10 '>
 			<p
 				className='mx-1 cursor-pointer flex items-center hover:text-purple-300'
 				onClick={toggleVisibility}>

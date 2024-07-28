@@ -28,10 +28,10 @@ export default function Home() {
 	}
 
 	return (
-		<main className='flex flex-col h-screen w-screen'>
+		<main className=' flex flex-col h-screen w-screen'>
 			<CanvasProvider>
 				<Navbar />
-				<div className='flex flex-row h-5/6 z-0 w-screen '>
+				<div className='flex flex-row  h-full w-full'>
 					<Gallery />
 					<Canvas />
 				</div>
