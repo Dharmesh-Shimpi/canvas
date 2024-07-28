@@ -87,7 +87,7 @@ export function Sidebar() {
 					onClick={addRectangle}>
 					<CIcon
 						icon={cilRectangle}
-						className='h-9 w-9 cursor-pointer m-2  font-thin'
+						className='h-7 cursor-pointer m-2  font-thin'
 					/>
 					Rectangle
 				</p>
@@ -96,7 +96,7 @@ export function Sidebar() {
 					onClick={addCircle}>
 					<CIcon
 						icon={cilCircle}
-						className='h-6 w-6 cursor-pointer m-2 hover:text-gray-400'
+						className='h-6 cursor-pointer m-2 hover:text-gray-400'
 					/>
 					Circle
 				</p>
@@ -105,7 +105,7 @@ export function Sidebar() {
 					onClick={addTriangle}>
 					<CIcon
 						icon={cilTriangle}
-						className='h-7 w-7 cursor-pointer m-2 hover:text-gray-400'
+						className='h-6 cursor-pointer m-2 hover:text-gray-400'
 					/>
 					Triangle
 				</p>
