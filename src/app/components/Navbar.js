@@ -31,7 +31,7 @@ const Navbar = () => {
 					className='text-sm p-2 hover:text-purple-300 flex flex-row justify-center items-center'>
 					<CIcon
 						icon={cilAccountLogout}
-						className='h-7 w-7 m-2'
+						className='h-6 m-2'
 					/>
 					Sign Out
 				</button>

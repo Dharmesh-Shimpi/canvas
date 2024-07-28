@@ -21,7 +21,7 @@ export const Image = ({ canvas }) => {
 			className='text-sm p-2 hover:text-purple-300 flex flex-row justify-center items-center'>
 			<CIcon
 				icon={cilCloudUpload}
-				className='h-7 w-7 m-2'
+				className='h-6 m-2'
 			/>
 			Upload Image
 		</button>

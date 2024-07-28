@@ -76,7 +76,7 @@ const ScreenRecorder = () => {
 					<CIcon
 						icon={cilMediaPlay}
 						className='
-					h-7 w-7 m-2'
+					h-6 m-2'
 					/>
 					Start Recording
 				</button>
@@ -87,7 +87,7 @@ const ScreenRecorder = () => {
 					<CIcon
 						icon={cilMediaStop}
 						className='
-					h-7 w-7 m-2'
+					h-6 m-2'
 					/>
 					Stop Recording
 				</button>
@@ -99,7 +99,7 @@ const ScreenRecorder = () => {
 					<CIcon
 						icon={cilSave}
 						className='
-					h-7 w-7 m-2 '
+					h-6 m-2 '
 					/>
 					Save Recording
 				</button>

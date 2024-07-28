@@ -73,7 +73,7 @@ export function Sidebar() {
 				onClick={toggleVisibility}>
 				<CIcon
 					icon={cilTextShapes}
-					className='h-8 w-8 mr-2 cursor-pointer font-thin'
+					className='h-6 mr-2 cursor-pointer '
 					onClick={addRectangle}
 				/>
 				Add shapes

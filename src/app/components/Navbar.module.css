@@ -1,35 +1,42 @@
 .customGradient {
-  background: linear-gradient(to top left, #7e5bef, #ec4899, #f43f5e, #fbbf24, #10b981);
-  background-size: 200% 200%;
-  animation: rotate-background 10s linear infinite;
+	background: linear-gradient(
+		to top left,
+		#7e5bef,
+		#ec4899,
+		#f43f5e,
+		#fbbf24,
+		#10b981
+	);
+	background-size: 500% 500%;
+	animation: rotate-background 10s linear infinite;
 }
 
 @keyframes rotate-background {
-  0% {
-    background-position: 0% 100%;
-  }
-  25% {
-    background-position: 100% 200%;
-  }
-  50% {
-    background-position: 200% 300%;
-  }
-  75%{
-    background-position: 100% 200%;
-  }
+	0% {
+		background-position: 0% 0%;
+	}
+	25% {
+		background-position: 50% 50%;
+	}
+	50% {
+		background-position: 100% 100%;
+	}
+	75% {
+		background-position: 50% 50%;
+	}
 
-  100% {
-    background-position: 0% 100%;
-  }
+	100% {
+		background-position: 0% 0%;
+	}
 }
 
 .text {
-  display: flex;
-  align-items: center;
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  margin-left: 2.25rem; 
-  font-size: 3rem; 
-  -webkit-font-smoothing: antialiased; 
+	display: flex;
+	align-items: center;
+	background-clip: text;
+	-webkit-background-clip: text;
+	color: transparent;
+	margin-left: 2.25rem;
+	font-size: 3rem;
+	-webkit-font-smoothing: antialiased;
 }
