@@ -7,6 +7,7 @@ import { useCanvas } from '../../context/canvasContext';
 import ScreenRecorder from './screenRecorder';
 import CIcon from '@coreui/icons-react';
 import { cilAccountLogout } from '@coreui/icons';
+import css from './Navbar.module.css';
 
 const Navbar = () => {
 	const router = useRouter();
@@ -20,9 +21,7 @@ const Navbar = () => {
 
 	return (
 		<nav className='flex flex-row justify-between items-center bg-gradient-to-tr from-gray-500 to-gray-800 text-white w-full h-20 z-10 drop-shadow-2xl '>
-			<p className='flex items-center bg-clip-text text-transparent ml-9  text-5xl bg-gradient-to-tl from-purple-500 to-green-300 antialiased font-thin'>
-				Canvas
-			</p>
+			<p className={`font-thin ${css.text} ${css.customGradient}`}>Canvas</p>
 
 			<div className='flex flex-row w-120 mr-9 text-white'>
 				<ScreenRecorder />
