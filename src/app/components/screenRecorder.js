@@ -1,3 +1,5 @@
+'use client';
+
 import { useState, useRef } from 'react';
 import axios from 'axios';
 import CIcon from '@coreui/icons-react';

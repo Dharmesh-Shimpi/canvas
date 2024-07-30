@@ -2,17 +2,17 @@
 
 import { useRouter } from 'next/navigation';
 import { signOut } from 'next-auth/react';
-import { Image } from '../canvas/image';
-import { useCanvas } from '../../context/canvasContext';
+import { Image } from '../canvas/uploadImage';
+import { useSelector } from 'react-redux';
 import ScreenRecorder from './screenRecorder';
 import CIcon from '@coreui/icons-react';
 import { cilAccountLogout } from '@coreui/icons';
-import Logo from './Logo';
+import Logo from './Logo/Logo';
 
 const Navbar = () => {
 	const router = useRouter();
 
-	const { canvas } = useCanvas();
+	const { canvas } = useSelector(state=>state.canvas);
 
 	const handleSignOut = () => {
 		signOut({ redirect: false });

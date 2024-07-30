@@ -1,18 +1,14 @@
-import { PrismaClient } from '@prisma/client';
-import { getServerSession } from 'next-auth/next';
-import { authOptions } from '../auth/[...nextauth]/route';
+// app/api/uploads/route.js
+import prisma from '../../lib/prisma';
+import { getSession } from '../../lib/auth';
 import { NextResponse } from 'next/server';
 
-const prisma = new PrismaClient();
-
-export async function GET(req) {
+export async function GET(request) {
 	try {
-		const session = await getServerSession({ req, ...authOptions });
+		const session = await getSession(request);
 
 		if (!session) {
-			return new Response(JSON.stringify({ error: 'Not authenticated' }), {
-				status: 401,
-			});
+			return NextResponse.json({ error: 'Not authenticated' }, { status: 401 });
 		}
 
 		const userId = session.user.id;

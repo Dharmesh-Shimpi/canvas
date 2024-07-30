@@ -4,8 +4,8 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import Link from 'next/link';
-import Loading from '../components/loading';
-import Logo from '../components/Logo';
+import Loading from '../components/Loading/loading';
+import Logo from '../components/Logo/Logo';
 
 export default function RegisterPage() {
 	const [email, setEmail] = useState('');

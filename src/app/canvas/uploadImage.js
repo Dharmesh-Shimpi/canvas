@@ -1,3 +1,5 @@
+'use client';
+
 import axios from 'axios';
 import { CIcon } from '@coreui/icons-react';
 import { cilCloudUpload } from '@coreui/icons';

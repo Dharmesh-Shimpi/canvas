@@ -4,8 +4,8 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { signIn } from 'next-auth/react';
 import Link from 'next/link';
-import Loading from '../components/loading';
-import Logo from '../components/Logo';
+import Loading from '../components/Loading/loading';
+import Logo from '../components/Logo/Logo';
 
 export default function LoginPage() {
 	const [email, setEmail] = useState('');

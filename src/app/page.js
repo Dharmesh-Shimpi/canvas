@@ -3,10 +3,12 @@
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
-import { CanvasProvider } from '../context/canvasContext';
-import Canvas from './canvas/page';
+import { Provider } from 'react-redux';
+import store from '../context/store';
+import { FetchProvider } from '../context/fetchContext.js';
+import Canvas from './canvas/canvas.js';
 import Navbar from './components/Navbar';
-import Loading from './components/loading';
+import Loading from './components/Loading/loading.js';
 import Gallery from './components/gallery';
 
 export default function Home() {
@@ -25,23 +27,25 @@ export default function Home() {
 
 	if (status === 'loading') {
 		return (
-			<main className=' flex justify-center items-center h-screen w-screen'>
+			<main className='flex justify-center items-center h-screen w-screen'>
 				<Loading />
 			</main>
 		);
 	}
 
 	return (
-		<main className=' flex flex-col h-screen w-screen'>
-			<CanvasProvider>
-				<Navbar />
-				<div className='overflow-auto flex justify-center items-center h-full w-full bg-gradient-to-br from-gray-500 to-gray-800'>
-					<div className=' flex flex-row max-h-full max-w-full'>
-						<Gallery />
-						<Canvas />
+		<Provider store={store}>
+			<main className='flex flex-col h-screen w-screen'>
+				<FetchProvider>
+					<Navbar />
+					<div className='overflow-auto flex justify-center items-center h-full w-full bg-gradient-to-br from-gray-500 to-gray-800'>
+						<div className='overflow-auto flex flex-row max-h-full max-w-full'>
+							<Gallery />
+							<Canvas />
+						</div>
 					</div>
-				</div>
-			</CanvasProvider>
-		</main>
+				</FetchProvider>
+			</main>
+		</Provider>
 	);
 }

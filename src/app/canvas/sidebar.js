@@ -9,11 +9,11 @@ import {
 	cilTriangle,
 	cilTextShapes,
 } from '@coreui/icons';
-import { useCanvas } from '../../context/canvasContext';
+import { useSelector } from 'react-redux';
 import css from './sidebar.module.css';
 
 export function Sidebar() {
-	const { canvas } = useCanvas();
+	const { canvas } = useSelector((state) => state.canvas);
 	const [visible, setVisible] = useState(false);
 	const toggleVisibility = () => {
 		setVisible(!visible);

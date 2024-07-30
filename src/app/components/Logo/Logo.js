@@ -1,3 +1,6 @@
+'use client';
+
+import React from 'react';
 import css from './Logo.module.css';
 
 function Logo() {
