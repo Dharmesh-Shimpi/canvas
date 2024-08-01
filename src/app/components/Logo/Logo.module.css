@@ -33,10 +33,15 @@
 .text {
 	display: flex;
 	align-items: center;
+	justify-content: center;
+	text-align: center;
+	vertical-align: middle;
 	background-clip: text;
 	-webkit-background-clip: text;
 	color: transparent;
 	/* margin-left: 2.25rem; */
+	padding: 0;
+	position: relative;
 	font-size: 5rem;
 	-webkit-font-smoothing: antialiased;
 }
