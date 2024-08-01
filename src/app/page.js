@@ -38,7 +38,7 @@ export default function Home() {
 			<main className='flex flex-col h-screen w-screen'>
 				<FetchProvider>
 					<Navbar />
-					<div className='overflow-auto flex justify-center items-center h-full w-full bg-gradient-to-br from-gray-500 to-gray-800'>
+					<div className='overflow-auto flex justify-center items-center h-full w-full bg-gradient-to-bl from-gray-500 to-gray-700'>
 						<div className='overflow-auto flex flex-row max-h-full max-w-full'>
 							<Gallery />
 							<Canvas />

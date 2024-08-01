@@ -25,7 +25,7 @@ const Gallery = () => {
 	};
 
 	return (
-		<div className='container flex justify-start flex-col h-full w-[200px] items-center bg-gray-500 shadow-xl m-5 rounded-xl'>
+		<div className='container flex justify-start flex-col h-full w-[250px] items-center bg-gray-500 shadow-xl m-5 rounded-xl'>
 			<div className='flex flex-row justify-center items-end drop-shadow-md py-5 z-10 mx-5'>
 				<CIcon
 					className='h-6'
