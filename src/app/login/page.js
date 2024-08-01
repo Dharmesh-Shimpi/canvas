@@ -16,7 +16,7 @@ export default function LoginPage() {
 	const handleLogin = async (e) => {
 		e.preventDefault();
 		setLoading(true);
-		console.log('button pressed');
+		
 		const result = await signIn('credentials', {
 			redirect: false,
 			email,
@@ -26,6 +26,7 @@ export default function LoginPage() {
 		setLoading(false);
 
 		if (result.ok) {
+			console.log('button pressed');
 			router.push('/');
 		} else {
 			alert('Login failed');

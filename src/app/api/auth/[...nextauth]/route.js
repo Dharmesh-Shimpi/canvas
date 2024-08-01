@@ -1,10 +1,8 @@
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import { PrismaClient } from '@prisma/client';
+import prisma from '@app/lib/prisma';
 import { compare } from 'bcryptjs';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
-
-const prisma = new PrismaClient();
 
 export const authOptions = {
 	providers: [
@@ -53,9 +51,6 @@ export const authOptions = {
 			session.accessToken = token.accessToken;
 			return session;
 		},
-	},
-	pages: {
-		signIn: '/login',
 	},
 	adapter: PrismaAdapter(prisma),
 };
