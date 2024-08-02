@@ -6,13 +6,14 @@ import { Image } from '../canvas/uploadImage';
 import { useSelector } from 'react-redux';
 import ScreenRecorder from './screenRecorder';
 import CIcon from '@coreui/icons-react';
-import { cilAccountLogout } from '@coreui/icons';
+import { cilAccountLogout, cilExternalLink } from '@coreui/icons';
 import Logo from './Logo/Logo';
+import Link from 'next/link';
 
 const Navbar = () => {
 	const router = useRouter();
 
-	const { canvas } = useSelector(state=>state.canvas);
+	const { canvas } = useSelector((state) => state.canvas);
 
 	const handleSignOut = () => {
 		signOut({ redirect: false });
@@ -24,6 +25,19 @@ const Navbar = () => {
 			<div className='flex flex-row justify-between items-center  text-white w-5/6 min-w h-20'>
 				<Logo />
 				<div className='flex flex-row w-120 mr-9 text-white'>
+					<a
+						href='https://remotion-lake.vercel.app/'
+						target='_blank'
+						rel='videos'
+						className=' flex flex-row items-center justify-center m-2
+						'>
+						<CIcon
+							icon={cilExternalLink}
+							className='h-5 m-2'
+						/>
+						Videos
+					</a>
+
 					<ScreenRecorder />
 					<Image canvas={canvas} />
 					<button
